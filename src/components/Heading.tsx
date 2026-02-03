@@ -1,7 +1,10 @@
 import styles from "./Heading.module.css";
 
-export function Heading() {
+export function Heading(props) {
   console.log(styles);
+  console.log(props);
 
-  return <h1 className={`${styles.cyan} ${styles.heading}`}>Olá Mundo</h1>;
+  return (
+    <h1 className={`${styles.cyan} ${styles.heading}`}>{props.children}</h1>
+  );
 }
