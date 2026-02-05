@@ -1,6 +1,6 @@
 import { HistoryIcon, HouseIcon, SettingsIcon, SunIcon } from "lucide-react";
 import styles from "./styles.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 type AvailableThemes = "dark" | "light";
 
@@ -17,13 +17,15 @@ export function Menu() {
       const nextTheme = currTheme === "dark" ? "light" : "dark";
       return nextTheme;
     });
-
-    document.documentElement.setAttribute("data-theme", theme);
   }
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    console.log("", Date.now());
+  }, [theme]);
 
   return (
     <nav className={`${styles.cyan} ${styles.menu}`}>
-      <h1>{theme}</h1>
       <a
         href="#"
         className={styles.menuLink}
