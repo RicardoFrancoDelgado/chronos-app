@@ -6,9 +6,10 @@ import { DefaultButton } from "./components/DefaultButton";
 import { DefaultInput } from "./components/DefaultInput";
 import { Logo } from "./components/Logo";
 import { Menu } from "./components/Menu";
+import { Footer } from "./components/Footer";
+
 import "./styles/global.css";
 import "./styles/theme.css";
-import { Footer } from "./components/Footer";
 
 export function App() {
   return (
