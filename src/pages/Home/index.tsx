@@ -4,7 +4,7 @@ import { MainForm } from "../../components/MainForm";
 import type { TaskStateModel } from "../../models/TaskStateModel";
 import { MainTemplate } from "../../templates/MainTemplate";
 
-type HomeProps = {
+export type HomeProps = {
   state: TaskStateModel;
   setState: React.Dispatch<React.SetStateAction<TaskStateModel>>;
 };
@@ -12,27 +12,14 @@ type HomeProps = {
 export function Home(props: HomeProps) {
   const { state, setState } = props;
 
-  function handleClick() {
-    setState((currentState) => {
-      return {
-        ...currentState,
-        currentCycle: 5,
-      };
-    });
-  }
-
   return (
     <MainTemplate>
       <Container>
-        <button onClick={handleClick}>Clicar</button>
+        <CountDown {...props} />
       </Container>
 
       <Container>
-        <CountDown />
-      </Container>
-
-      <Container>
-        <MainForm />
+        <MainForm {...props} />
       </Container>
     </MainTemplate>
   );
