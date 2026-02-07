@@ -1,10 +1,11 @@
+// import { AboutPomodoro } from "./pages/AboutPomodoro";
+// import { NotFound } from "./pages/NotFound";
 import { useState } from "react";
 import type { TaskStateModel } from "./models/TaskStateModel";
 import { Home } from "./pages/Home";
-// import { AboutPomodoro } from "./pages/AboutPomodoro";
-// import { NotFound } from "./pages/NotFound";
 import "./styles/global.css";
 import "./styles/theme.css";
+import { TaskContext } from "./contexts/TaskContext";
 
 const initialTask: TaskStateModel = {
   tasks: [],
@@ -22,5 +23,9 @@ const initialTask: TaskStateModel = {
 export function App() {
   const [state, setState] = useState(initialTask);
 
-  return <Home />;
+  return (
+    <TaskContext.Provider value={{ outracoisa: 123 }}>
+      <Home />;
+    </TaskContext.Provider>
+  );
 }
