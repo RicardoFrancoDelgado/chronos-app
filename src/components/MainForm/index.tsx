@@ -51,7 +51,7 @@ export function MainForm() {
         activeTask: newTask,
         currentCycle: nextCycle,
         secondsRemaining, //TODO
-        formattedSecondsRemaining: formattedSecondsToMinutes(secondsRemaining), 
+        formattedSecondsRemaining: formattedSecondsToMinutes(secondsRemaining),
         tasks: [...currentTask.tasks, newTask],
       };
     });
@@ -73,9 +73,11 @@ export function MainForm() {
         <p>Próximo intervalo é de 25min</p>
       </div>
 
-      <div className="formRow">
-        <Cycles />
-      </div>
+      {state.currentCycle > 0 && (
+        <div className="formRow">
+          <Cycles />
+        </div>
+      )}
 
       <div className="formRow">
         <DefaultButton icon={<PlayCircleIcon />} />
