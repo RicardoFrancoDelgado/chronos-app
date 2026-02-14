@@ -37,7 +37,7 @@ export function MainForm() {
       startDate: Date.now(),
       completeDate: null,
       interruptDate: null,
-      duration: 1, //TODO
+      duration: state.config[nextCycleType],
       type: nextCycleType,
     };
 
@@ -49,7 +49,7 @@ export function MainForm() {
         config: { ...currentTask.config },
         activeTask: newTask,
         currentCycle: nextCycle,
-        secondsRemaining,
+        secondsRemaining, //TODO
         formattedSecondsRemaining: "00:00", //TODO
         tasks: [...currentTask.tasks, newTask],
       };
