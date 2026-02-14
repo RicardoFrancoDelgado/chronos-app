@@ -6,6 +6,7 @@ import { useRef } from "react";
 import type { TaskModel } from "../../models/TaskModel";
 import { useTaskContext } from "../../contexts/TaskContext/useTaskContext";
 import { getNextCycle } from "../../utils/getNextCycle";
+import { getNextCycleType } from "../../utils/getNextCycleType";
 
 export function MainForm() {
   const { state, setState } = useTaskContext();
@@ -14,6 +15,9 @@ export function MainForm() {
 
   // armazenando o próximo ciclo antes de enviar o formulário
   const nextCycle = getNextCycle(state.currentCycle);
+
+  // armazendo o type com base no cycle
+  const nextCycleType = getNextCycleType(nextCycle);
 
   function handleCreateNewTask(ev: React.SubmitEvent<HTMLFormElement>) {
     ev.preventDefault();
@@ -34,7 +38,7 @@ export function MainForm() {
       completeDate: null,
       interruptDate: null,
       duration: 1, //TODO
-      type: "workTime", //TODO
+      type: nextCycleType,
     };
 
     const secondsRemaining = newTask.duration * 60;
